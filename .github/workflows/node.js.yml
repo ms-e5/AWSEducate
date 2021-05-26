@@ -5,7 +5,7 @@ on:
   watch:
     types: [started]
   schedule:
-    - cron: 50 4,10,23 * * *
+    - cron: 50 23 * * *
 jobs:
   build:
 
@@ -23,9 +23,4 @@ jobs:
         WEB_PWD:  ${{ secrets.WEB_PWD }}
       run: |
           npm install puppeteer
-          node ./cli.js
-          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-          unzip -q awscliv2.zip
-          sudo ./aws/install --update
-          mv ./.aws/ ~/
           bash ec2.sh
